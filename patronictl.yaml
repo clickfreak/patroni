@@ -1,0 +1,1 @@
+{dcs_api: 'etcd://172.17.0.2:4001', namespace: /patroni/}

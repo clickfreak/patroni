@@ -33,7 +33,7 @@ def parse_connection_string(value):
 def get_dcs(node_name, config):
     available_implementations = []
     for name in os.listdir(os.path.dirname(__file__)):
-        if name.endswith('.py') and not name.startswith('__'):  # find module
+        if name.endswith('.py') and not name.startswith('__') and name.startswith('etcd'):  # find module
             module = importlib.import_module(__package__ + '.' + name[:-3])
             for name in dir(module):  # iterate through module content
                 if not name.startswith('__'):  # skip internal stuff

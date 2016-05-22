@@ -15,8 +15,8 @@ RUN apt-get upgrade -y
 ENV PGVERSION 9.5
 RUN apt-get install postgresql-${PGVERSION} postgresql-server-dev-${PGVERSION} -y
 RUN apt-get install python python-dev python-pip -y
-ADD requirements-py2.txt /requirements-py2.txt
-RUN pip install -r /requirements-py2.txt
+ADD requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
 
 ENV PATH /usr/lib/postgresql/${PGVERSION}/bin:$PATH
 

@@ -81,7 +81,7 @@ fi
 
 mkdir -p ~postgres/.config/patroni
 cat > ~postgres/.config/patroni/patronictl.yaml <<__EOF__
-{dcs_api: 'etcd://${ETCD_CLUSTER}', namespace: /service/}
+{dcs_api: 'etcd://${ETCD_CLUSTER}', namespace: /wdatabases/}
 __EOF__
 
 cat > /patroni/postgres.yaml <<__EOF__
@@ -119,6 +119,9 @@ postgresql:
     username: admin
     password: admin
   parameters:
+    ssl: "on"
+    ssl_cert_file: "/etc/ssl/certs/ssl-cert-snakeoil.pem"
+    ssl_key_file: "/etc/ssl/private/ssl-cert-snakeoil.key"
     archive_mode: "on"
     wal_level: hot_standby
     archive_command: 'true'
